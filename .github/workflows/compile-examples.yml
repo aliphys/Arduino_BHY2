@@ -30,3 +30,4 @@ jobs:
           libraries: |
             - name: ArduinoBLE
             - name: ArduinoIoTCloud
+            - source-path: ./src
