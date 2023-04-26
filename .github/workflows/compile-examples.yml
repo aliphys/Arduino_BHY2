@@ -30,6 +30,4 @@ jobs:
           libraries: |
             - name: ArduinoBLE
             - name: ArduinoIoTCloud
-            - source-path: ./src
-            - source-path: ./src/sensors
-            - source-path: ./src/bosch
+            - source-path: ./
