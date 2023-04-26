@@ -1,0 +1,32 @@
+name: Compile Examples - Arduino_BHY2 Library
+
+# See: https://docs.github.com/en/actions/reference/events-that-trigger-workflows
+on:
+  push:
+  pull_request:
+  schedule:
+    # Run every Tuesday at 8 AM UTC to catch breakage caused by changes to external resources (libraries, platforms).
+    - cron: "0 8 * * TUE"
+  workflow_dispatch:
+  repository_dispatch:
+
+
+jobs:
+  compile-sketch:
+    runs-on: ubuntu-latest
+
+    steps:
+      # This step makes the contents of the repository available to the workflow
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # For more information: https://github.com/arduino/compile-sketches#readme
+      - name: Compile sketch
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: "arduino:mbed_nicla:nicla_sense"
+          sketch-paths: |
+            - ./
+          libraries: |
+            - name: ArduinoBLE
+            - name: ArduinoIoTCloud
